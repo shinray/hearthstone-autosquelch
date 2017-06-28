@@ -40,6 +40,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HearthstoneDeckTracker">
+      <HintPath>..\..\..\..\AppData\Local\HearthstoneDeckTracker\app-1.3.5\HearthstoneDeckTracker.exe</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,15 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutosquelchPlugin.cs" />
+    <Compile Include="HueAndBrightness.cs" />
     <Compile Include="MouseHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DeckTracker\Hearthstone Deck Tracker\Hearthstone Deck Tracker.csproj">
-      <Project>{e63a3f1c-e662-4e62-be43-af27cb9e953d}</Project>
-      <Name>Hearthstone Deck Tracker</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

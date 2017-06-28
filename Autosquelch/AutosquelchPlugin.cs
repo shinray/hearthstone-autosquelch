@@ -12,6 +12,22 @@ namespace Autosquelch
 {
     public class AutosquelchPlugin : IPlugin
     {
+        // allows for global access to this var
+        private static AutosquelchPlugin _self;
+        public static AutosquelchPlugin Instance
+        {
+            get
+            {
+                if (_self != null)
+                    return _self;
+                _self = new AutosquelchPlugin();
+                return _self;
+            }
+        }
+
+        // Was last set at 60
+        // https://github.com/HearthSim/Hearthstone-Deck-Tracker/blob/8d375c2e0c61be55bf342c76a57ccfa0267ede8c/Hearthstone%20Deck%20Tracker/Config.cs
+        public int DeckExportDelay = 60;
         public string Author
         {
             get
@@ -89,7 +105,7 @@ namespace Autosquelch
         {
             Squelched = false;
             PluginRunning = true;
-            var d = Config.Instance.DeckExportDelay;
+            //var d = Config.Instance.DeckExportDelay;
 
             GameEvents.OnGameStart.Add(() =>
             {
@@ -155,7 +171,7 @@ namespace Autosquelch
 
                 await MouseHelpers.ClickOnPoint(hearthstoneWindow, opponentHeroPosition, false);
 
-                await Task.Delay(TimeSpan.FromMilliseconds(Config.Instance.DeckExportDelay * 4));
+                await Task.Delay(TimeSpan.FromMilliseconds(DeckExportDelay * 4));
                 var capture = await ScreenCapture.CaptureHearthstoneAsync(squelchBubblePosition, lockWidth, lockHeight, hearthstoneWindow);
                 squelchBubbleVisible = HueAndBrightness.GetAverage(capture).Brightness > minBrightness;
                 if (!squelchBubbleVisible)

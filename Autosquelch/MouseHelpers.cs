@@ -28,7 +28,7 @@ namespace Autosquelch
             else
                 mouse_event((uint)RightDown, 0, 0, 0, UIntPtr.Zero);
 
-            await Task.Delay(Config.Instance.DeckExportDelay);
+            await Task.Delay(AutosquelchPlugin.Instance.DeckExportDelay);
 
             //mouse up
             if (leftMouseButton)
@@ -36,7 +36,7 @@ namespace Autosquelch
             else
                 mouse_event((uint)RightUp, 0, 0, 0, UIntPtr.Zero);
 
-            await Task.Delay(Config.Instance.DeckExportDelay);
+            await Task.Delay(AutosquelchPlugin.Instance.DeckExportDelay);
         }
     }
 }
